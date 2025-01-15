@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كورس Next.js | شرح كامل في ساعتين</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 280px;
+            background: #fff;
+            padding: 2rem;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+
+        .content {
+            flex: 1;
+            margin-right: 280px;
+            padding: 2rem;
+            max-width: 1200px;
+        }
+
+        .sidebar h3 {
+            color: #2563eb;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .nav-list {
+            list-style: none;
+        }
+
+        .nav-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-list a {
+            color: #4b5563;
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-list a:hover {
+            background: #f3f4f6;
+            color: #2563eb;
+        }
+
+        .section {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #1e40af;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            color: #2563eb;
+            margin: 2rem 0 1rem;
+            font-size: 1.8rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        code {
+            background: #f1f5f9;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.3rem;
+            font-family: monospace;
+            color: #2563eb;
+        }
+
+        pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .highlight {
+            background: #dbeafe;
+            padding: 1rem;
+            border-right: 4px solid #2563eb;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h3>محتويات الدرس</h3>
+            <ul class="nav-list">
+                <li><a href="#intro">مقدمة عن Next.js</a></li>
+                <li><a href="#why-next">لماذا Next.js؟</a></li>
+                <li><a href="#ssr-vs-spa">SSR مقابل SPA</a></li>
+                <li><a href="#setup">إعداد المشروع</a></li>
+                <li><a href="#project-structure">هيكل المشروع</a></li>
+                <li><a href="#pages">الصفحات في Next.js</a></li>
+                <li><a href="#routing">التوجيه (Routing)</a></li>
+                <li><a href="#components">المكونات (Components)</a></li>
+                <li><a href="#api">API Routes</a></li>
+                <li><a href="#deployment">نشر المشروع</a></li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <section class="section" id="intro">
+                <h1>كورس Next.js | شرح كامل في ساعتين</h1>
+                <div class="highlight">
+                    Next.js هو إطار عمل مبني على React يوفر حلولاً متكاملة لبناء تطبيقات ويب حديثة وسريعة.
+                </div>
+            </section>
+
+            <section class="section" id="why-next">
+                <h2>لماذا Next.js؟</h2>
+                <p>نيكست جي إس صار يعتبر الخيار الأول اللي ممكن تعتمد عليه كإطار عمل تستخدمه بجانب رياكت عشان تبني فيها مواقعك بمختلف أشكالها، خصوصاً مع إصدار رياكت الأخير.</p>
+                <p>المميزات الرئيسية:</p>
+                <ul>
+                    <li>دعم SSR (Server-Side Rendering)</li>
+                    <li>تحسين SEO</li>
+                    <li>أداء عالي</li>
+                    <li>توجيه تلقائي للصفحات</li>
+                    <li>دعم API Routes</li>
+                </ul>
+            </section>
+
+            <section class="section" id="ssr-vs-spa">
+                <h2>SSR مقابل SPA</h2>
+                <p>في التطبيقات التقليدية (SPA):</p>
+                <pre>
+Browser -> Empty HTML -> JavaScript -> Render Content
+                </pre>
+                <p>في Next.js (SSR):</p>
+                <pre>
+Browser -> Server Renders HTML -> Interactive Content
+                </pre>
+                <div class="highlight">
+                    SSR يحل مشكلة SEO ويحسن الأداء الأولي للتطبيق.
+                </div>
+            </section>
+
+            <section class="section" id="setup">
+                <h2>إعداد المشروع</h2>
+                <p>لإنشاء مشروع جديد:</p>
+                <pre>
+npx create-next-app@latest my-app
+cd my-app
+npm run dev</pre>
+            </section>
+
+            <section class="section" id="project-structure">
+                <h2>هيكل المشروع</h2>
+                <p>المجلدات الرئيسية:</p>
+                <ul>
+                    <li><code>app/</code> - الصفحات والمكونات</li>
+                    <li><code>public/</code> - الملفات الثابتة</li>
+                    <li><code>components/</code> - المكونات المشتركة</li>
+                </ul>
+            </section>
+
+            <section class="section" id="pages">
+                <h2>الصفحات في Next.js</h2>
+                <p>إنشاء صفحة جديدة:</p>
+                <pre>
+// app/posts/page.js
+export default function Posts() {
+    return (
+        <div>
+            <h1>صفحة المقالات</h1>
+        </div>
+    )
+}</pre>
+            </section>
+
+            <section class="section" id="routing">
+                <h2>التوجيه (Routing)</h2>
+                <p>يعتمد Next.js على نظام ملفات للتوجيه:</p>
+                <ul>
+                    <li><code>app/page.js</code> -> <code>/</code></li>
+                    <li><code>app/about/page.js</code> -> <code>/about</code></li>
+                    <li><code>app/blog/[id]/page.js</code> -> <code>/blog/123</code></li>
+                </ul>
+            </section>
+
+            <section class="section" id="components">
+                <h2>المكونات (Components)</h2>
+                <p>يمكنك إنشاء مكونات عادية كما في React:</p>
+                <pre>
+// components/Header.js
+export default function Header() {
+    return (
+        <header>
+            <nav>{/* ... */}</nav>
+        </header>
+    )
+}</pre>
+            </section>
+
+            <section class="section" id="api">
+                <h2>API Routes</h2>
+                <p>إنشاء نقطة نهاية API:</p>
+                <pre>
+// app/api/posts/route.js
+export async function GET() {
+    return Response.json({ posts: [] })
+}</pre>
+            </section>
+
+            <section class="section" id="deployment">
+                <h2>نشر المشروع</h2>
+                <p>يمكنك نشر مشروع Next.js على منصات مثل:</p>
+                <ul>
+                    <li>Vercel (الأفضل لـ Next.js)</li>
+                    <li>Netlify</li>
+                    <li>AWS</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Highlight active section in sidebar
+        const sections = document.querySelectorAll('.section');
+        const navLinks = document.querySelectorAll('.nav-list a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.background = '';
+                link.style.color = '';
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.style.background = '#f3f4f6';
+                    link.style.color = '#2563eb';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
