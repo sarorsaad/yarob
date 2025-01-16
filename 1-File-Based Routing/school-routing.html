@@ -17,6 +17,7 @@
             min-height: 100vh;
             padding: 1rem;
             margin: 0;
+            scroll-behavior: smooth;
         }
 
         .school-container {
@@ -88,12 +89,119 @@
             grid-template-rows: repeat(3, 1fr);
             gap: 1rem;
             min-width: 300px;
-            padding: 1rem;
-            background: #f3f0ff;
+            padding: 1.5rem;
+            background: #1e1e3f;
             border-radius: 12px;
             border: 3px solid #722ed1;
             box-shadow: 0 2px 8px rgba(114, 46, 209, 0.1);
             position: relative;
+        }
+
+        .right-section .room {
+            background: #2d2b55;
+            border: 1px solid #483d8b;
+            padding: 1.2rem;
+            border-radius: 8px;
+            color: #fff;
+            position: relative;
+        }
+
+        .right-section .room .db-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+            padding: 0.4rem;
+            background: #1a1a35;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            border-left: 3px solid #00ff9d;
+        }
+
+        .right-section .room .db-indicator::before {
+            content: '🗄️';
+            font-size: 1rem;
+        }
+
+        .right-section .room .db-indicator .db-type {
+            color: #00ff9d;
+            font-family: monospace;
+            font-weight: bold;
+        }
+
+        .right-section .room .db-indicator .db-name {
+            color: #a8a8ff;
+            font-family: monospace;
+            margin-left: auto;
+        }
+
+        .db-operation {
+            font-size: 0.7rem;
+            color: #00ff9d;
+            background: #1a1a35;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            margin-left: 0.5rem;
+            font-family: monospace;
+        }
+
+        .right-section .room h3 {
+            color: #00bcd4;
+            margin-bottom: 0.8rem;
+        }
+
+        .right-section .room::before {
+            content: 'SERVER';
+            position: absolute;
+            top: -0.5rem;
+            right: 0.5rem;
+            font-size: 0.7rem;
+            background: #ff5722;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .right-section .room .http-methods {
+            display: flex;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .http-method {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-weight: bold;
+            font-family: monospace;
+        }
+
+        .http-get { background: #4caf50; color: white; }
+        .http-post { background: #2196f3; color: white; }
+        .http-put { background: #ff9800; color: white; }
+        .http-delete { background: #f44336; color: white; }
+
+        .right-section .route-path {
+            color: #a8a8ff;
+            font-family: monospace;
+            font-size: 0.9rem;
+            background: #1e1e3f;
+            padding: 0.5rem;
+            border-radius: 4px;
+            border-left: 3px solid #00bcd4;
+        }
+
+        .right-section .route-type.api {
+            background: #311b92;
+            color: #b39ddb;
+            border-color: #7c4dff;
+        }
+
+        .right-section .route-type.api:hover {
+            background: #7c4dff;
+            color: white;
+            box-shadow: 0 2px 4px rgba(124, 77, 255, 0.3);
         }
 
         .bottom-section {
@@ -107,6 +215,37 @@
             border-radius: 12px;
             border: 3px solid #52c41a;
             box-shadow: 0 2px 8px rgba(82, 196, 26, 0.1);
+        }
+
+        .center-section {
+            grid-area: center;
+            text-align: center;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 12px;
+            border: 3px solid #0070f3;
+            box-shadow: 0 2px 8px rgba(0, 112, 243, 0.1);
+        }
+
+        .center-section h2 {
+            color: #0070f3;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .special-files {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .special-file {
+            background: #f0f2f5;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            color: #666;
+            font-family: monospace;
         }
 
         .assembly-area {
@@ -241,36 +380,23 @@
         }
 
         .route-type {
-            font-size: 1.1rem;
-            color: #0070f3;
-            background: #e8f2ff;
-            padding: 0.3rem 0.8rem;
-            border-radius: 6px;
             display: inline-block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-            align-self: flex-start;
+            background: #e6f7ff;
+            color: #0070f3;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid #91d5ff;
+            margin: 0.5rem 0;
+            text-decoration: none;
+            transition: all 0.2s ease;
         }
 
-        .top-section .route-type {
-            background: #e3f2ff;
-            border: 1px solid #0070f3;
-        }
-
-        .left-section .route-type {
-            background: #ffe3e3;
-            border: 1px solid #ff4d4f;
-        }
-
-        .right-section .route-type {
-            background: #e3e0ff;
-            border: 1px solid #722ed1;
-        }
-
-        .bottom-section .route-type {
-            background: #e3ffe7;
-            border: 1px solid #52c41a;
+        .route-type:hover {
+            background: #0070f3;
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0, 112, 243, 0.2);
         }
 
         .room p.route-path {
@@ -290,11 +416,14 @@
             right: 20px;
             background: #0070f3;
             color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            opacity: 0;
-            transform: translateY(-20px);
-            transition: all 0.3s ease;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1.4rem;
+            font-weight: 500;
+            font-family: monospace;
+            white-space: nowrap;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 112, 243, 0.2);
         }
 
         .route-indicator.show {
@@ -383,40 +512,199 @@
             white-space: nowrap;
             z-index: 1000;
         }
+
+        .route-section {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #f0f7ff;
+            border-radius: 12px;
+            border: 3px solid #0070f3;
+            box-shadow: 0 2px 8px rgba(0, 112, 243, 0.1);
+            display: none;  /* Hide by default */
+        }
+
+        .route-section.active {
+            display: block;  /* Show when active */
+        }
+
+        .route-section h2 {
+            font-size: 1.8rem;
+            color: #0070f3;
+            margin-bottom: 1rem;
+        }
+
+        .route-section .content {
+            padding: 1rem;
+        }
+
+        .route-section .content h3 {
+            font-size: 1.6rem;
+            color: #0070f3;
+            margin-bottom: 0.8rem;
+        }
+
+        .route-section .content p {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .route-section .content pre {
+            background: #e1e4e8;
+            padding: 0.8rem;
+            border-radius: 4px;
+            font-size: 1.2rem;
+            color: #444;
+            margin-bottom: 1rem;
+        }
+
+        .route-section .content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .route-section .content li {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 0.8rem;
+        }
+
+        .route-link {
+            color: #0070f3;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .route-link:hover {
+            color: #0051b3;
+            text-decoration: underline;
+        }
+
+        .main-route {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border: 2px solid #0070f3;
+            border-radius: 8px;
+            margin: 2rem auto;
+            max-width: 600px;
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .main-route:hover {
+            background: #f0f7ff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 112, 243, 0.1);
+        }
+
+        .main-route .route-link {
+            display: block;
+            padding: 1rem;
+            color: #0070f3;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .main-route .route-link:hover {
+            text-decoration: underline;
+        }
+
+        .route-type.dynamic {
+            background: #fff0f6;
+            border-color: #eb2f96;
+            color: #eb2f96;
+        }
+
+        .route-type.dynamic:hover {
+            background: #eb2f96;
+            color: white;
+            box-shadow: 0 2px 4px rgba(235, 47, 150, 0.2);
+        }
+
+        .route-type.api {
+            background: #f0f5ff;
+            border-color: #597ef7;
+            color: #597ef7;
+        }
+
+        .route-type.api:hover {
+            background: #597ef7;
+            color: white;
+            box-shadow: 0 2px 4px rgba(89, 126, 247, 0.2);
+        }
+
+        .route-type.parallel {
+            background: #e6fffb;
+            border-color: #13c2c2;
+            color: #13c2c2;
+        }
+
+        .route-type.parallel:hover {
+            background: #13c2c2;
+            color: white;
+            box-shadow: 0 2px 4px rgba(19, 194, 194, 0.2);
+        }
+
+        .route-type.group {
+            background: #fff7e6;
+            border-color: #fa8c16;
+            color: #fa8c16;
+        }
+
+        .route-type.group:hover {
+            background: #fa8c16;
+            color: white;
+            box-shadow: 0 2px 4px rgba(250, 140, 22, 0.2);
+        }
+
+        .route-type.intercepted {
+            background: #f6ffed;
+            border-color: #52c41a;
+            color: #52c41a;
+        }
+
+        .route-type.intercepted:hover {
+            background: #52c41a;
+            color: white;
+            box-shadow: 0 2px 4px rgba(82, 196, 26, 0.2);
+        }
     </style>
 </head>
 <body>
     <div class="school-container">
         <h1>Interactive School Routing Demo</h1>
         <p>Click on different rooms to understand how File-Based Routing works!</p>
-        
+
         <div class="school-layout">
             <!-- Top Section -->
             <div class="top-section">
-                <div class="room" data-route="/math">
-                    <h3>Math Room</h3>
-                    <span class="route-type">Static</span>
-                    <p class="route-path">/app/math/page.js</p>
+                <div class="room" data-route="/app/prep1/page.js">
+                    <h3>Prep1 Class</h3>
+                    <a href="#static-routes-section" class="route-type">Static</a>
+                    <p class="route-path">/app/prep1/page.js</p>
                 </div>
-                <div class="room" data-route="/science">
-                    <h3>Science Lab</h3>
-                    <span class="route-type">Static</span>
-                    <p class="route-path">/app/science/page.js</p>
+                <div class="room" data-route="/app/prep2/page.js">
+                    <h3>Prep2 Class</h3>
+                    <a href="#static-routes-section" class="route-type">Static</a>
+                    <p class="route-path">/app/prep2/page.js</p>
                 </div>
-                <div class="room" data-route="/english">
-                    <h3>English Room</h3>
-                    <span class="route-type">Static</span>
-                    <p class="route-path">/app/english/page.js</p>
-                </div>
-                <div class="room" data-route="/art">
-                    <h3>Art Studio</h3>
-                    <span class="route-type">Static</span>
-                    <p class="route-path">/app/art/page.js</p>
+                <div class="room" data-route="/app/prep3/page.js">
+                    <h3>Prep3 Class</h3>
+                    <a href="#static-routes-section" class="route-type">Static</a>
+                    <p class="route-path">/app/prep3/page.js</p>
                 </div>
             </div>
 
             <!-- Left Section -->
             <div class="left-section">
+                <div class="room" data-route="/app/students/[id]/page.js">
+                    <h3>Student Profile</h3>
+                    <a href="#dynamic-routes-section" class="route-type dynamic">Dynamic</a>
+                    <p class="route-path">/app/students/[id]/page.js</p>
+                </div>
                 <div class="room" data-route="/locker/123">
                     <h3>Locker #123</h3>
                     <span class="route-type">Dynamic</span>
@@ -434,11 +722,11 @@
                 </div>
             </div>
 
-            <!-- Center Assembly Area -->
-            <div class="assembly-area">
+            <!-- Center Section (Assembly Area) -->
+            <div class="center-section">
                 <h2>Assembly Area</h2>
-                <div class="route-info">
-                    Main Route: /app/page.js
+                <div class="main-route">
+                    <a href="#home-page-section" class="route-link">Main Route: /app/page.js</a>
                 </div>
                 <div class="special-files">
                     <span class="special-file">layout.js</span>
@@ -449,39 +737,68 @@
 
             <!-- Right Section -->
             <div class="right-section">
-                <div class="room" data-route="/api/grades">
+                <div class="room" data-route="/app/api/grades/route.js">
                     <h3>Grades API</h3>
-                    <span class="route-type">API</span>
+                    <a href="#api-routes-section" class="route-type api">API</a>
+                    <div class="http-methods">
+                        <span class="http-method http-get">GET</span>
+                        <span class="http-method http-post">POST</span>
+                    </div>
                     <p class="route-path">/app/api/grades/route.js</p>
+                    <div class="db-indicator">
+                        <span class="db-type">MongoDB</span>
+                        <span class="db-name">grades_collection</span>
+                        <span class="db-operation">READ/WRITE</span>
+                    </div>
                 </div>
-                <div class="room" data-route="/api/attendance">
+                <div class="room" data-route="/app/api/attendance/route.js">
                     <h3>Attendance API</h3>
-                    <span class="route-type">API</span>
+                    <a href="#api-routes-section" class="route-type api">API</a>
+                    <div class="http-methods">
+                        <span class="http-method http-get">GET</span>
+                        <span class="http-method http-post">POST</span>
+                        <span class="http-method http-put">PUT</span>
+                    </div>
                     <p class="route-path">/app/api/attendance/route.js</p>
+                    <div class="db-indicator">
+                        <span class="db-type">PostgreSQL</span>
+                        <span class="db-name">attendance_records</span>
+                        <span class="db-operation">READ/WRITE</span>
+                    </div>
                 </div>
-                <div class="room" data-route="/api/schedule">
+                <div class="room" data-route="/app/api/schedule/route.js">
                     <h3>Schedule API</h3>
-                    <span class="route-type">API</span>
+                    <a href="#api-routes-section" class="route-type api">API</a>
+                    <div class="http-methods">
+                        <span class="http-method http-get">GET</span>
+                        <span class="http-method http-put">PUT</span>
+                        <span class="http-method http-delete">DELETE</span>
+                    </div>
                     <p class="route-path">/app/api/schedule/route.js</p>
+                    <div class="db-indicator">
+                        <span class="db-type">MySQL</span>
+                        <span class="db-name">class_schedules</span>
+                        <span class="db-operation">READ/WRITE</span>
+                    </div>
                 </div>
             </div>
 
             <!-- Bottom Section -->
             <div class="bottom-section">
-                <div class="room" data-route="/library">
-                    <h3>Library</h3>
-                    <span class="route-type">Parallel</span>
-                    <p class="route-path">@library/page.js</p>
+                <div class="room" data-route="/_parallel">
+                    <h3>Parallel Routes</h3>
+                    <a href="#parallel-routes-section" class="route-type parallel">Parallel</a>
+                    <p class="route-path">@folder/page.js</p>
                 </div>
-                <div class="room" data-route="/cafeteria">
-                    <h3>Cafeteria</h3>
-                    <span class="route-type">Group</span>
-                    <p class="route-path">(facilities)/cafeteria/page.js</p>
+                <div class="room" data-route="/(group)">
+                    <h3>Route Groups</h3>
+                    <a href="#group-routes-section" class="route-type group">Group</a>
+                    <p class="route-path">(folder)/page.js</p>
                 </div>
-                <div class="room" data-route="/gym">
-                    <h3>Gym</h3>
-                    <span class="route-type">Intercepted</span>
-                    <p class="route-path">(..)gym/page.js</p>
+                <div class="room" data-route="/middleware">
+                    <h3>Route Intercepting</h3>
+                    <a href="#intercepted-routes-section" class="route-type intercepted">Intercepted</a>
+                    <p class="route-path">..(..)/page.js</p>
                 </div>
             </div>
         </div>
@@ -490,67 +807,393 @@
     <div class="route-indicator"></div>
     <div class="animation-container"></div>
 
+    <div class="route-section" id="home-page-section">
+        <h2>Creating the Home Page (/app/page.js)</h2>
+        <div class="content">
+            <h3>1. Project Setup</h3>
+            <p>First, create a Next.js project:</p>
+            <pre><code>npx create-next-app@latest school
+cd school</code></pre>
+
+            <h3>2. Code for Home Page</h3>
+            <p>Create page.js inside the app directory:</p>
+            <pre><code>// app/page.js
+export default function HomePage() {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Main Route: /app/page.js&lt;/h1&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+            <h3>3. Key Points</h3>
+            <ul>
+                <li>This creates a minimal home page with no styling or props</li>
+                <li>The component is automatically used as the root route ('/')</li>
+                <li>Access it at http://localhost:3000 after running npm run dev</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="route-section" id="static-routes-section">
+        <h2>Understanding Static Routes</h2>
+        <div class="content">
+            <h3>What is a Static Route?</h3>
+            <p>Static routes are the simplest form of routing in Next.js. They represent pages that don't change based on dynamic data or parameters. Each file in your app directory automatically becomes a route.</p>
+
+            <h3>1. Creating Static Routes</h3>
+            <p>Create files in your app directory following this structure:</p>
+            <pre><code>school/
+└── app/
+    ├── page.js        // Home route: /
+    ├── prep1/
+    │   └── page.js    // Prep1 route: /prep1
+    ├── prep2/
+    │   └── page.js    // Prep2 route: /prep2
+    └── prep3/
+        └── page.js    // Prep3 route: /prep3
+</code></pre>
+
+            <h3>2. Example Static Route</h3>
+            <p>Here's how to create a static Prep1 page:</p>
+            <pre><code>// app/prep1/page.js
+export default function Prep1Page() {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Prep1 Class&lt;/h1&gt;
+      &lt;p&gt;This is a static route at /prep1&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+            <h3>3. Key Points</h3>
+            <ul>
+                <li>File name must be <code>page.js</code> inside the route folder</li>
+                <li>The URL matches the folder structure</li>
+                <li>No special configuration needed - just create the file</li>
+                <li>Perfect for content that doesn't change often</li>
+            </ul>
+
+            <h3>4. Best Practices</h3>
+            <ul>
+                <li>Keep route names lowercase and use hyphens for multiple words</li>
+                <li>Group related routes in folders</li>
+                <li>Export the component as default</li>
+                <li>Use semantic HTML elements for better accessibility</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="route-section" id="dynamic-routes-section">
+        <h2>Understanding Dynamic Routes</h2>
+        <div class="content">
+            <h3>What is a Dynamic Route?</h3>
+            <p>Dynamic routes in Next.js allow you to create pages that can handle dynamic data based on URL parameters. They're perfect for pages like user profiles, product details, or any content that follows a consistent pattern but with different data.</p>
+
+            <h3>1. Creating Dynamic Routes</h3>
+            <p>Create files using square brackets [param] to define dynamic segments:</p>
+            <pre><code>school/
+└── app/
+    ├── students/
+    │   └── [id]/        // Dynamic segment
+    │       └── page.js  // Handles /students/1, /students/2, etc.
+    └── classes/
+        └── [grade]/     // Dynamic segment
+            └── page.js  // Handles /classes/prep1, /classes/prep2, etc.</code></pre>
+
+            <h3>2. Example Dynamic Route</h3>
+            <p>Here's how to create a dynamic student profile page:</p>
+            <pre><code>// app/students/[id]/page.js
+export default function StudentPage({ params }) {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Student Profile&lt;/h1&gt;
+      &lt;p&gt;Student ID: {params.id}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+            <h3>3. Key Points</h3>
+            <ul>
+                <li>Use square brackets [param] for dynamic segments</li>
+                <li>Access parameters via the params prop</li>
+                <li>Can have multiple dynamic segments: [grade]/[subject]/page.js</li>
+                <li>Works with any valid URL parameter value</li>
+            </ul>
+
+            <h3>4. Best Practices</h3>
+            <ul>
+                <li>Use meaningful parameter names</li>
+                <li>Validate parameters before using them</li>
+                <li>Handle loading and error states</li>
+                <li>Consider using TypeScript for better type safety</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="route-section" id="api-routes-section">
+        <h2>Understanding API Routes</h2>
+        <div class="content">
+            <h3>What is an API Route?</h3>
+            <p>API Routes in Next.js allow you to create API endpoints as part of your application. They provide a solution for building your API with Next.js, enabling you to handle HTTP requests and implement serverless functions.</p>
+
+            <h3>1. Creating API Routes</h3>
+            <p>Create route.js files in your app/api directory:</p>
+            <pre><code>school/
+└── app/
+    └── api/
+        ├── grades/
+        │   └── route.js    // Handles /api/grades
+        ├── attendance/
+        │   └── route.js    // Handles /api/attendance
+        └── schedule/
+            └── route.js    // Handles /api/schedule</code></pre>
+
+            <h3>2. Example API Route</h3>
+            <p>Here's how to create a grades API endpoint:</p>
+            <pre><code>// app/api/grades/route.js
+export async function GET(request) {
+  try {
+    const grades = [
+      { id: 1, student: "John", grade: "A" },
+      { id: 2, student: "Sarah", grade: "B+" }
+    ];
+    
+    return new Response(JSON.stringify(grades), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  } catch (error) {
+    return new Response(JSON.stringify({ error: 'Failed to fetch grades' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+}</code></pre>
+
+            <h3>3. HTTP Methods</h3>
+            <p>API routes support all HTTP methods:</p>
+            <pre><code>// app/api/grades/route.js
+export async function GET(request) { /* Handle GET */ }
+export async function POST(request) { /* Handle POST */ }
+export async function PUT(request) { /* Handle PUT */ }
+export async function DELETE(request) { /* Handle DELETE */ }</code></pre>
+
+            <h3>4. Key Points</h3>
+            <ul>
+                <li>API routes are serverless functions</li>
+                <li>They run on the server side only</li>
+                <li>Support all HTTP methods (GET, POST, PUT, DELETE, etc.)</li>
+                <li>Can access databases and external services securely</li>
+            </ul>
+
+            <h3>5. Best Practices</h3>
+            <ul>
+                <li>Always validate input data</li>
+                <li>Use appropriate HTTP status codes</li>
+                <li>Implement proper error handling</li>
+                <li>Add authentication when needed</li>
+                <li>Use environment variables for sensitive data</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="route-section" id="parallel-routes-section">
+        <h2>Understanding Parallel Routes</h2>
+        <div class="content">
+            <h3>What are Parallel Routes?</h3>
+            <p>Parallel routes in Next.js allow you to simultaneously render multiple pages in the same layout. They're perfect for split views, dashboards, and modals.</p>
+
+            <h3>1. Creating Parallel Routes</h3>
+            <p>Use the @ prefix to define parallel routes:</p>
+            <pre><code>app/
+├── @dashboard/
+│   └── page.js     // URL: /
+├── @analytics/
+│   └── page.js     // URL: /
+└── layout.js       // Renders both pages</code></pre>
+
+            <h3>2. Example Layout</h3>
+            <pre><code>// app/layout.js
+export default function Layout({ 
+  dashboard,  // @dashboard/page.js
+  analytics   // @analytics/page.js
+}) {
+  return (
+    &lt;div className="grid"&gt;
+      &lt;div&gt;{dashboard}&lt;/div&gt;
+      &lt;div&gt;{analytics}&lt;/div&gt;
+    &lt;/div&gt;
+  )
+}</code></pre>
+
+            <h3>3. Key Points</h3>
+            <ul>
+                <li>Use @ prefix for parallel route folders</li>
+                <li>Each parallel route is independent</li>
+                <li>Can have their own loading and error states</li>
+                <li>Perfect for complex UI layouts</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="route-section" id="group-routes-section">
+        <h2>Understanding Route Groups</h2>
+        <div class="content">
+            <h3>What are Route Groups?</h3>
+            <p>Route groups allow you to organize routes without affecting the URL structure. They're useful for organizing routes by feature, team, or other logical groupings.</p>
+
+            <h3>1. Creating Route Groups</h3>
+            <p>Use parentheses (group) to create route groups:</p>
+            <pre><code>app/
+├── (auth)/
+│   ├── login/
+│   │   └── page.js    // URL: /login
+│   └── register/
+│       └── page.js    // URL: /register
+└── (shop)/
+    ├── products/
+    │   └── page.js    // URL: /products
+    └── cart/
+        └── page.js    // URL: /cart</code></pre>
+
+            <h3>2. Key Points</h3>
+            <ul>
+                <li>Parentheses () define a route group</li>
+                <li>Group names don't affect the URL</li>
+                <li>Can have separate layouts per group</li>
+                <li>Useful for code organization</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="route-section" id="intercepted-routes-section">
+        <h2>Understanding Route Interception</h2>
+        <div class="content">
+            <h3>What is Route Interception?</h3>
+            <p>Route interception allows you to intercept routes and show different content while maintaining the URL. Perfect for modals, slideovers, or custom views.</p>
+
+            <h3>1. Creating Intercepted Routes</h3>
+            <p>Use (..) convention to intercept routes:</p>
+            <pre><code>app/
+├── feed/
+│   └── page.js           // URL: /feed
+└── photo/
+    ├── [...id]/
+    │   └── page.js       // URL: /photo/123
+    └── (..)feed/
+        └── [id]/
+            └── page.js   // Intercepts /photo/123 
+                         // while on /feed</code></pre>
+
+            <h3>2. Example Intercepted Route</h3>
+            <pre><code>// app/photo/(..)feed/[id]/page.js
+export default function PhotoModal({ params }) {
+  return (
+    &lt;div className="modal"&gt;
+      &lt;img src={`/photos/${params.id}`} /&gt;
+    &lt;/div&gt;
+  )
+}</code></pre>
+
+            <h3>3. Key Points</h3>
+            <ul>
+                <li>Use (..) to go up one level</li>
+                <li>Use (...) to match segments from the root</li>
+                <li>Perfect for modal patterns</li>
+                <li>Maintains clean URLs</li>
+            </ul>
+        </div>
+    </div>
+
     <script>
         const rooms = document.querySelectorAll('.room');
         const routeIndicator = document.querySelector('.route-indicator');
-        const animationContainer = document.querySelector('.animation-container');
+        const routeSections = document.querySelectorAll('.route-section');
 
+        // Function to show specific section and hide others
+        function showSection(sectionId) {
+            routeSections.forEach(section => {
+                if (section.id === sectionId) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+        }
+
+        // Handle clicks on route links
+        document.querySelectorAll('.route-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                showSection(targetId);
+                // Smooth scroll to the section
+                document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Handle clicks on Static links
+        document.querySelectorAll('.route-type').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                showSection(targetId);
+                // Smooth scroll to the section
+                document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Show animation particles
         function createParticles(x, y) {
-            for (let i = 0; i < 10; i++) {
+            const animationContainer = document.querySelector('.animation-container');
+            for (let i = 0; i < 30; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
+                
+                // Random position around click
+                const randomX = x + (Math.random() - 0.5) * 100;
+                const randomY = y + (Math.random() - 0.5) * 100;
+                
                 particle.style.left = x + 'px';
                 particle.style.top = y + 'px';
                 
-                const angle = (Math.random() * Math.PI * 2);
-                const velocity = 2 + Math.random() * 4;
-                const dx = Math.cos(angle) * velocity;
-                const dy = Math.sin(angle) * velocity;
-                
                 animationContainer.appendChild(particle);
                 
-                let opacity = 1;
-                function animate() {
-                    if (opacity <= 0) {
-                        particle.remove();
-                        return;
-                    }
-                    
-                    opacity -= 0.02;
-                    particle.style.opacity = opacity;
-                    particle.style.left = (parseFloat(particle.style.left) + dx) + 'px';
-                    particle.style.top = (parseFloat(particle.style.top) + dy) + 'px';
-                    
-                    requestAnimationFrame(animate);
-                }
+                // Animate to random position
+                requestAnimationFrame(() => {
+                    particle.style.transform = `translate(${randomX - x}px, ${randomY - y}px)`;
+                    particle.style.opacity = '0';
+                });
                 
-                animate();
+                // Remove particle after animation
+                setTimeout(() => {
+                    animationContainer.removeChild(particle);
+                }, 1000);
             }
         }
 
+        // Show route indicator when clicking rooms
         rooms.forEach(room => {
             room.addEventListener('click', (e) => {
                 const route = room.dataset.route;
                 
-                // Show route indicator
-                routeIndicator.textContent = `Navigating to: ${route}`;
+                // Update route indicator
+                routeIndicator.textContent = route;
                 routeIndicator.classList.add('show');
                 
-                // Create particle effect
-                const rect = room.getBoundingClientRect();
-                createParticles(e.clientX, e.clientY);
+                // Create particles at click position
+                createParticles(e.pageX, e.pageY);
                 
-                // Highlight the clicked room
-                rooms.forEach(r => r.style.opacity = '0.5');
-                room.style.opacity = '1';
-                
-                // Reset after animation
+                // Hide indicator after delay
                 setTimeout(() => {
                     routeIndicator.classList.remove('show');
-                    rooms.forEach(r => r.style.opacity = '1');
                 }, 2000);
             });
         });
+
+        // Show home page section by default
+        showSection('home-page-section');
     </script>
 </body>
 </html>
