@@ -22,11 +22,13 @@
 
         .school-container {
             max-width: 1400px;
+            width: 95%;
             margin: 0 auto;
             background: white;
-            padding: 1.5rem;
+            padding: 1rem;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow-x: hidden;
         }
 
         .school-container h1 {
@@ -44,24 +46,20 @@
         .school-layout {
             display: grid;
             grid-template-areas: 
-                "top-left top-center top-right"
+                "top-center top-center top-center"
                 "left center right"
-                "bottom-left bottom-center bottom-right";
+                "bottom-center bottom-center bottom-center";
             gap: 1.5rem;
             margin-top: 1rem;
-            aspect-ratio: 1.6;
-            position: relative;
-            margin-left: 0;
-            padding-left: 0;
+            padding: 1rem;
             background: #ffffff;
         }
 
         .top-section {
             grid-area: top-center;
             display: grid;
-            grid-template-columns: repeat(4, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 1rem;
-            margin-left: 0;
             padding: 1rem;
             background: #f0f7ff;
             border-radius: 12px;
@@ -74,8 +72,6 @@
             display: grid;
             grid-template-rows: repeat(3, 1fr);
             gap: 1rem;
-            min-width: 300px;
-            margin-left: 0;
             padding: 1rem;
             background: #fff5f5;
             border-radius: 12px;
@@ -88,13 +84,11 @@
             display: grid;
             grid-template-rows: repeat(3, 1fr);
             gap: 1rem;
-            min-width: 300px;
-            padding: 1.5rem;
+            padding: 1rem;
             background: #1e1e3f;
             border-radius: 12px;
             border: 3px solid #722ed1;
             box-shadow: 0 2px 8px rgba(114, 46, 209, 0.1);
-            position: relative;
         }
 
         .right-section .room {
@@ -209,7 +203,6 @@
             display: grid;
             grid-template-columns: repeat(3, minmax(260px, 1fr));
             gap: 1rem;
-            margin-left: 0;
             padding: 1rem;
             background: #f0fff4;
             border-radius: 12px;
@@ -221,31 +214,112 @@
             grid-area: center;
             text-align: center;
             padding: 2rem;
-            background: #fff;
+            background: white;
             border-radius: 12px;
             border: 3px solid #0070f3;
             box-shadow: 0 2px 8px rgba(0, 112, 243, 0.1);
+            position: relative;
+            overflow: hidden;
+            border: 8px solid #2ecc71 !important;
+            background: linear-gradient(45deg, rgba(46, 204, 113, 0.1), rgba(46, 204, 113, 0.2));
+            transform: scale(1.05);
+            z-index: 10;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .center-section::before,
+        .center-section::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 100%;
+            background: #2ecc71;
+            top: 0;
+            animation: gateMove 3s infinite;
+            z-index: 1;
+        }
+
+        .center-section::before {
+            left: 0;
+            transform-origin: left;
+        }
+
+        .center-section::after {
+            right: 0;
+            transform-origin: right;
         }
 
         .center-section h2 {
-            color: #0070f3;
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-        }
-
-        .special-files {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 1.5rem;
-        }
-
-        .special-file {
-            background: #f0f2f5;
-            padding: 0.5rem 1rem;
+            position: relative;
+            z-index: 2;
+            color: #2ecc71 !important;
+            text-shadow: 0 0 5px rgba(46, 204, 113, 0.5);
+            font-size: 1.6rem !important;
+            text-align: center;
+            width: 100%;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 4px;
-            color: #666;
-            font-family: monospace;
+            margin-bottom: 20px;
+        }
+
+        .center-section .main-route {
+            position: relative;
+            z-index: 2;
+            animation: glowBorder 2s infinite;
+        }
+
+        .center-section .main-route a {
+            display: block;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            color: #2ecc71;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .center-section .main-route a:hover {
+            background: #2ecc71;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .student-dot {
+            width: 35px;
+            height: 35px;
+            position: fixed;
+            pointer-events: none;
+            animation: moveStudent 3s ease-in-out;
+            z-index: 1000;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%232ecc71"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>') center/contain no-repeat;
+            transform-origin: center;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes moveStudent {
+            0% {
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            100% {
+                transform: translate(var(--moveX), var(--moveY)) scale(1) rotate(360deg);
+            }
+        }
+
+        .student-dot.entering {
+            animation: studentEnter 0.5s ease-out;
+        }
+
+        @keyframes studentEnter {
+            0% {
+                transform: scale(0) rotate(0deg);
+            }
+            100% {
+                transform: scale(1) rotate(360deg);
+            }
         }
 
         .assembly-area {
@@ -291,19 +365,41 @@
 
         .assembly-area .special-files {
             display: flex;
+            flex-direction: column;
             gap: 1rem;
-            margin-top: 1rem;
-            justify-content: center;
+            margin-top: 1.5rem;
         }
 
         .assembly-area .special-file {
-            background: #e1e4e8;
-            padding: 0.5rem 0.75rem;
-            border-radius: 4px;
+            background: rgba(46, 204, 113, 0.1);
+            padding: 0.8rem;
+            border-radius: 8px;
+            color: #2ecc71;
+            font-family: monospace;
             font-size: 1rem;
-            color: #444;
-            min-width: 80px;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            border: 2px solid #2ecc71;
+            transition: all 0.3s ease;
+        }
+
+        .assembly-area .special-file:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(46, 204, 113, 0.2);
+        }
+
+        .assembly-area .special-file .file-name {
+            font-weight: bold;
+            color: #2ecc71;
+        }
+
+        .assembly-area .special-file .file-path {
+            font-size: 0.9rem;
+            color: #666;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
         }
 
         .room {
@@ -671,9 +767,476 @@
             color: white;
             box-shadow: 0 2px 4px rgba(82, 196, 26, 0.2);
         }
+
+        @media (max-width: 1200px) {
+            .school-layout {
+                grid-template-areas: 
+                    "top-center"
+                    "left"
+                    "right"
+                    "bottom-center";
+                grid-template-columns: 1fr;
+            }
+            
+            .left-section,
+            .right-section {
+                min-height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .school-container {
+                width: 98%;
+                padding: 0.5rem;
+            }
+
+            .school-layout {
+                gap: 1rem;
+                padding: 0.5rem;
+            }
+
+            .top-section,
+            .left-section,
+            .right-section {
+                padding: 0.75rem;
+            }
+
+            .room {
+                padding: 0.75rem;
+            }
+        }
+
+        /* Main Route Styling */
+        .room h3:contains("Main Route: /app/page.js"),
+        div[data-route="/app/page.js"] {
+            border: 8px solid #2ecc71 !important;
+            position: relative;
+            overflow: hidden;
+            animation: glowBorder 2s infinite;
+            background: linear-gradient(45deg, rgba(46, 204, 113, 0.1), rgba(46, 204, 113, 0.2));
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        div[data-route="/app/page.js"]::before,
+        div[data-route="/app/page.js"]::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 100%;
+            background: #2ecc71;
+            top: 0;
+            animation: gateMove 3s infinite;
+            z-index: 1;
+        }
+
+        div[data-route="/app/page.js"]::before {
+            left: 0;
+            transform-origin: left;
+        }
+
+        div[data-route="/app/page.js"]::after {
+            right: 0;
+            transform-origin: right;
+        }
+
+        div[data-route="/app/page.js"] h3 {
+            position: relative;
+            z-index: 2;
+            color: #2ecc71 !important;
+            text-shadow: 0 0 5px rgba(46, 204, 113, 0.5);
+            font-size: 1.4rem !important;
+            text-align: center;
+            width: 100%;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        @keyframes gateMove {
+            0%, 100% {
+                transform: scaleX(1);
+            }
+            50% {
+                transform: scaleX(0.2);
+            }
+        }
+
+        @keyframes glowBorder {
+            0%, 100% {
+                box-shadow: 0 0 20px #2ecc71;
+            }
+            50% {
+                box-shadow: 0 0 40px #2ecc71, 0 0 60px #2ecc71;
+            }
+        }
+
+        /* Path Animation */
+        .student-dot {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            pointer-events: none;
+            animation: moveStudent 4s linear;
+            z-index: 1000;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%232ecc71"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>') center/contain no-repeat;
+            transform-origin: center;
+        }
+
+        @keyframes moveStudent {
+            0% {
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            100% {
+                transform: translate(var(--moveX), var(--moveY)) scale(1) rotate(360deg);
+            }
+        }
+
+        .student-dot.entering {
+            animation: studentEnter 0.5s ease-out;
+        }
+
+        @keyframes studentEnter {
+            0% {
+                transform: scale(0) rotate(0deg);
+            }
+            100% {
+                transform: scale(1) rotate(360deg);
+            }
+        }
+
+        .dot-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            z-index: 1000;
+        }
+
+        @keyframes moveDot {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                transform: translate(var(--moveX), var(--moveY)) scale(1);
+            }
+        }
+
+        /* Layout Explanation Section */
+        .layout-explanation {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .layout-title {
+            color: #2ecc71;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .layout-icon {
+            width: 24px;
+            height: 24px;
+            fill: #2ecc71;
+        }
+
+        .layout-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease;
+        }
+
+        .step-item:hover {
+            transform: translateX(10px);
+        }
+
+        .step-number {
+            background: #2ecc71;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex-grow: 1;
+        }
+
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .step-description {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .code-example {
+            background: #2d3436;
+            color: #dfe6e9;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: monospace;
+            margin: 10px 0;
+            position: relative;
+        }
+
+        .code-example::before {
+            content: 'layout.js';
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background: #2ecc71;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: white;
+        }
+
+        /* Header Navigation Styles */
+        header {
+            background: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            padding: 1rem 2rem;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 30px;
+        }
+
+        .logo span {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: #2ecc71;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .nav-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        /* Special Files Styles */
+        .special-files {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .special-file {
+            background: #fff;
+            border: 2px solid #2ecc71;
+            border-radius: 8px;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .special-file:hover {
+            transform: translateX(10px);
+            box-shadow: 0 4px 12px rgba(46, 204, 113, 0.2);
+        }
+
+        .file-icon {
+            width: 24px;
+            height: 24px;
+            fill: #2ecc71;
+        }
+
+        .file-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .file-name {
+            font-weight: bold;
+            color: #2ecc71;
+        }
+
+        .file-path {
+            color: #666;
+            font-family: monospace;
+            font-size: 0.9rem;
+            background: #f8f9fa;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        /* Layout.js Section Styles */
+        .layout-js-section {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 2rem;
+            box-shadow: 0 4px 12px rgba(46, 204, 113, 0.1);
+        }
+
+        .layout-js-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .layout-js-header h2 {
+            font-size: 2.2rem;
+            color: #2d3436;
+        }
+
+        .layout-js-icon {
+            width: 48px;
+            height: 48px;
+            fill: #2ecc71;
+        }
+
+        .layout-step {
+            display: flex;
+            gap: 2rem;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .step-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2ecc71;
+            min-width: 48px;
+        }
+
+        .step-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .step-description {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.2rem;
+        }
+
+        .code-block {
+            background: #2d3436;
+            color: #dfe6e9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            font-family: monospace;
+            line-height: 1.6;
+            font-size: 1.1rem;
+            position: relative;
+            overflow-x: auto;
+        }
+
+        .code-block::before {
+            content: attr(data-label);
+            position: absolute;
+            top: -12px;
+            right: 12px;
+            background: #2ecc71;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
     </style>
 </head>
 <body>
+    <header>
+        <nav>
+            <div class="nav-content">
+                <div class="logo">
+                    <img src="next.svg" alt="Next.js Logo">
+                    <span>Next.js Routing Demo</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#home-page-section">Home Page</a>
+                    <a href="#dynamic-routes-section">Dynamic Routes</a>
+                    <a href="#layout-section">Layout.js Guide</a>
+                    <a href="#layoutjs-section">Layout.js Deep Dive</a>
+                </div>
+            </div>
+        </nav>
+    </header>
     <div class="school-container">
         <h1>Interactive School Routing Demo</h1>
         <p>Click on different rooms to understand how File-Based Routing works!</p>
@@ -705,20 +1268,20 @@
                     <a href="#dynamic-routes-section" class="route-type dynamic">Dynamic</a>
                     <p class="route-path">/app/students/[id]/page.js</p>
                 </div>
-                <div class="room" data-route="/locker/123">
-                    <h3>Locker #123</h3>
-                    <span class="route-type">Dynamic</span>
-                    <p class="route-path">/app/locker/[id]/page.js</p>
+                <div class="room" data-route="/app/desk/[id]/page.js">
+                    <h3>Desk #1</h3>
+                    <span class="route-type dynamic">Dynamic</span>
+                    <div class="route-path">/app/desk/[id]/page.js</div>
                 </div>
-                <div class="room" data-route="/locker/456">
-                    <h3>Locker #456</h3>
-                    <span class="route-type">Dynamic</span>
-                    <p class="route-path">/app/locker/[id]/page.js</p>
+                <div class="room" data-route="/app/desk/[id]/page.js">
+                    <h3>Desk #2</h3>
+                    <span class="route-type dynamic">Dynamic</span>
+                    <div class="route-path">/app/desk/[id]/page.js</div>
                 </div>
-                <div class="room" data-route="/locker/789">
-                    <h3>Locker #789</h3>
-                    <span class="route-type">Dynamic</span>
-                    <p class="route-path">/app/locker/[id]/page.js</p>
+                <div class="room" data-route="/app/desk/[id]/page.js">
+                    <h3>Desk #3</h3>
+                    <span class="route-type dynamic">Dynamic</span>
+                    <div class="route-path">/app/desk/[id]/page.js</div>
                 </div>
             </div>
 
@@ -729,10 +1292,38 @@
                     <a href="#home-page-section" class="route-link">Main Route: /app/page.js</a>
                 </div>
                 <div class="special-files">
-                    <span class="special-file">layout.js</span>
-                    <span class="special-file">loading.js</span>
-                    <span class="special-file">error.js</span>
+                    <div class="special-file" onclick="window.location.href='#layoutjs-section'" style="cursor: pointer;">
+                        <svg class="file-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>
+                        </svg>
+                        <div class="file-content">
+                            <span class="file-name">layout.js</span>
+                            <span class="file-path">/app/layout.js</span>
+                            <span class="learn-more">Click to learn more →</span>
+                        </div>
+                    </div>
+
+                    <div class="special-file">
+                        <svg class="file-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                        </svg>
+                        <div class="file-content">
+                            <span class="file-name">loading.js</span>
+                            <span class="file-path">/app/loading.js</span>
+                        </div>
+                    </div>
+
+                    <div class="special-file">
+                        <svg class="file-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-2h-2v2zm0-4h2V7h-2v6z"/>
+                        </svg>
+                        <div class="file-content">
+                            <span class="file-name">error.js</span>
+                            <span class="file-path">/app/error.js</span>
+                        </div>
+                    </div>
                 </div>
+                <div class="dot-container"></div>
             </div>
 
             <!-- Right Section -->
@@ -1074,17 +1665,18 @@ export default function Layout({
             <p>Route interception allows you to intercept routes and show different content while maintaining the URL. Perfect for modals, slideovers, or custom views.</p>
 
             <h3>1. Creating Intercepted Routes</h3>
-            <p>Use (..) convention to intercept routes:</p>
+            <p>Use the (..) convention to intercept routes:</p>
             <pre><code>app/
 ├── feed/
-│   └── page.js           // URL: /feed
-└── photo/
-    ├── [...id]/
-    │   └── page.js       // URL: /photo/123
-    └── (..)feed/
-        └── [id]/
-            └── page.js   // Intercepts /photo/123 
-                         // while on /feed</code></pre>
+│   └── page.js           // URL: /
+├── photo/
+│   ├── [...id]/
+│   │   └── page.js       // URL: /photo/123
+│   └── (..)feed/
+│       └── [id]/
+│           └── page.js   // Intercepts /photo/123 
+│                         // while on /feed
+└── layout.js           // Renders both pages</code></pre>
 
             <h3>2. Example Intercepted Route</h3>
             <pre><code>// app/photo/(..)feed/[id]/page.js
@@ -1103,6 +1695,130 @@ export default function PhotoModal({ params }) {
                 <li>Perfect for modal patterns</li>
                 <li>Maintains clean URLs</li>
             </ul>
+        </div>
+    </div>
+
+    <div class="route-section" id="layout-section">
+        <h2>Understanding layout.js</h2>
+        <div class="content">
+            <h3>What is layout.js?</h3>
+            <p>layout.js is a special Next.js file that defines shared layouts for multiple pages. It helps maintain consistent UI elements across your application.</p>
+
+            <h3>1. Creating layout.js</h3>
+            <p>Create a layout.js file in your app directory to define the shared UI:</p>
+            <pre><code>// app/layout.js
+export default function RootLayout({ children }) {
+  return (
+    &lt;html&gt;
+      &lt;body&gt;
+        &lt;nav&gt;Your Navigation&lt;/nav&gt;
+        {children}
+      &lt;/body&gt;
+    &lt;/html&gt;
+  );
+}</code></pre>
+
+            <h3>2. Nested Layouts</h3>
+            <p>Create layouts for specific sections by adding layout.js in subdirectories:</p>
+            <pre><code>// app/dashboard/layout.js
+export default function DashboardLayout({ children }) {
+  return (
+    &lt;div&gt;
+      &lt;aside&gt;Dashboard Sidebar&lt;/aside&gt;
+      {children}
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+            <h3>3. Automatic Route Grouping</h3>
+            <p>layout.js automatically applies to all pages within its directory and subdirectories. Pages inherit layouts from their parent directories.</p>
+
+            <h3>4. Template Modification</h3>
+            <p>Unlike regular pages, layout.js persists across page changes, maintaining state and avoiding re-renders of shared elements.</p>
+            <div class="nav-links">
+                <a href="#home-page-section">Home Page</a>
+                <a href="#dynamic-routes-section">Dynamic Routes</a>
+                <a href="#layout-section">Layout.js Guide</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="layout-js-section" id="layoutjs-section">
+        <div class="layout-js-header">
+            <svg class="layout-js-icon" viewBox="0 0 24 24">
+                <path d="M3 3h18v18H3V3zm16 16V7H5v12h14zM7 9h10v2H7V9zm0 4h10v2H7v-2z"/>
+            </svg>
+            <h2>Understanding layout.js</h2>
+        </div>
+
+        <div class="layout-js-steps">
+            <div class="layout-step">
+                <div class="step-number">1</div>
+                <div class="step-details">
+                    <h3 class="step-title">What is layout.js?</h3>
+                    <p class="step-description">
+                        layout.js is a special file in Next.js that defines the shared UI elements for multiple pages. 
+                        It wraps around page content and maintains consistent layouts across your application.
+                    </p>
+                </div>
+            </div>
+
+            <div class="layout-step">
+                <div class="step-number">2</div>
+                <div class="step-details">
+                    <h3 class="step-title">Creating layout.js</h3>
+                    <p class="step-description">
+                        Create a layout.js file in your app directory to define the root layout:
+                    </p>
+                    <div class="code-block" data-label="app/layout.js">
+                        export default function RootLayout({ children }) {<br>
+                        &nbsp;&nbsp;return (<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;html lang="en"&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;body&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;nav&gt;Your Navigation&lt;/nav&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{children}<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;footer&gt;Your Footer&lt;/footer&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/body&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/html&gt;<br>
+                        &nbsp;&nbsp;)<br>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="layout-step">
+                <div class="step-number">3</div>
+                <div class="step-details">
+                    <h3 class="step-title">Nested Layouts</h3>
+                    <p class="step-description">
+                        Create layouts for specific sections by adding layout.js in subdirectories:
+                    </p>
+                    <div class="code-block" data-label="app/dashboard/layout.js">
+                        export default function DashboardLayout({ children }) {<br>
+                        &nbsp;&nbsp;return (<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;aside&gt;Dashboard Menu&lt;/aside&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;main&gt;{children}&lt;/main&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+                        &nbsp;&nbsp;)<br>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="layout-step">
+                <div class="step-number">4</div>
+                <div class="step-details">
+                    <h3 class="step-title">Key Features</h3>
+                    <p class="step-description">
+                        - Persists between page changes<br>
+                        - Maintains state<br>
+                        - Can fetch data<br>
+                        - Supports metadata configuration<br>
+                        - Can be nested for complex layouts
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -1194,6 +1910,112 @@ export default function PhotoModal({ params }) {
 
         // Show home page section by default
         showSection('home-page-section');
+
+        // Function to create and animate student
+        function createStudentAnimation() {
+            const mainRoute = document.querySelector('.main-route');
+            // Define the complete sequence with all routes
+            const sequence = [
+                // First sequence - Student and Desks
+                { route: '[data-route="/app/students/[id]/page.js"]', name: 'Student Profile' },
+                { route: '[data-route="/app/desk/[id]/page.js"]', name: 'Desk 1' },
+                { route: '[data-route="/app/desk/[id]/page.js"]:nth-of-type(2)', name: 'Desk 2' },
+                { route: '[data-route="/app/desk/[id]/page.js"]:nth-of-type(3)', name: 'Desk 3' },
+                // Second sequence - Classes
+                { route: '[data-route="/app/prep1/page.js"]', name: 'Prep1' },
+                { route: '[data-route="/app/prep2/page.js"]', name: 'Prep2' },
+                { route: '[data-route="/app/prep3/page.js"]', name: 'Prep3' },
+                { route: '[data-route="/app/[class]/page.js"]', name: 'Dynamic' }
+            ];
+            
+            if (!mainRoute) return;
+
+            // Remove any existing students
+            document.querySelectorAll('.student-dot').forEach(student => student.remove());
+
+            let currentIndex = 0;
+
+            function animateNextMovement() {
+                if (currentIndex >= sequence.length) {
+                    currentIndex = 0;
+                    setTimeout(animateNextMovement, 1500); // Longer pause before restarting
+                    return;
+                }
+
+                const targetSection = sequence[currentIndex].route.includes(':nth-of-type') ?
+                    document.querySelectorAll(sequence[currentIndex].route.split(':')[0])[parseInt(sequence[currentIndex].route.match(/\d+/)[0]) - 1] :
+                    document.querySelector(sequence[currentIndex].route);
+
+                if (!targetSection) {
+                    currentIndex++;
+                    setTimeout(animateNextMovement, 500);
+                    return;
+                }
+
+                const mainRect = mainRoute.getBoundingClientRect();
+                const sectionRect = targetSection.getBoundingClientRect();
+
+                // Calculate the center points
+                const startX = mainRect.left + mainRect.width / 2;
+                const startY = mainRect.top + mainRect.height / 2;
+                const endX = sectionRect.left + sectionRect.width / 2;
+                const endY = sectionRect.top + sectionRect.height / 2;
+
+                // Create student
+                const student = document.createElement('div');
+                student.className = 'student-dot entering';
+                student.style.left = `${startX}px`;
+                student.style.top = `${startY}px`;
+                document.body.appendChild(student);
+
+                // Start movement after entrance animation
+                setTimeout(() => {
+                    student.classList.remove('entering');
+                    student.style.setProperty('--moveX', `${endX - startX}px`);
+                    student.style.setProperty('--moveY', `${endY - startY}px`);
+                    student.style.animation = 'moveStudent 3s ease-in-out';
+
+                    // Add different glow colors based on sequence
+                    const isFirstSequence = currentIndex < 4;
+                    const glowColor = isFirstSequence ? 
+                        'rgba(46, 204, 113, 0.5)' : // Green for first sequence
+                        'rgba(52, 152, 219, 0.5)';  // Blue for second sequence
+
+                    // Highlight target section
+                    targetSection.style.transition = 'all 0.3s ease';
+                    targetSection.style.boxShadow = `0 0 20px ${glowColor}`;
+                    
+                    setTimeout(() => {
+                        targetSection.style.boxShadow = '';
+                    }, 3000);
+                }, 500);
+
+                // Handle animation end
+                student.addEventListener('animationend', (e) => {
+                    if (e.animationName === 'moveStudent') {
+                        student.remove();
+                        currentIndex++;
+                        setTimeout(animateNextMovement, 1000); // Wait before next movement
+                    }
+                });
+            }
+
+            // Start the animation sequence
+            setTimeout(animateNextMovement, 1000); // Initial delay
+        }
+
+        // Start student animation on load
+        window.addEventListener('load', createStudentAnimation);
+
+        // Handle window resize
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                document.querySelectorAll('.student-dot').forEach(student => student.remove());
+                createStudentAnimation();
+            }, 250);
+        });
     </script>
 </body>
 </html>
